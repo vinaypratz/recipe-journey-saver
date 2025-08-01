@@ -12,7 +12,8 @@ const LoginForm = () => {
   const navigate = useNavigate();
 
 
- 
+    console.log("Login attempted with:", { username, password });
+    navigate("/dashboard");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
