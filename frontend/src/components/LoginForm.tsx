@@ -21,7 +21,7 @@ const LoginForm = () => {
     
   
       try {
-        const response = await fetch("http://ec2-65-0-97-19.ap-south-1.compute.amazonaws.com:4000/api/login", {
+        const response = await fetch("https://my-backend-alb-272056293.ap-south-1.elb.amazonaws.com/api/login", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ username, password }),
