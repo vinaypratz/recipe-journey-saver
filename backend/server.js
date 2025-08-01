@@ -4,7 +4,13 @@ const cors = require('cors');
 const { Pool } = require('pg');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: [
+    'https://heartfelt-heliotrope-e9da64.netlify.app/', // replace with your actual frontend URL
+    'http://localhost:4000' // optional, if you use local frontend dev server
+  ],
+  credentials: true
+}));
 app.use(express.json());
 
 // Set up PostgreSQL connection pool using environment variables
