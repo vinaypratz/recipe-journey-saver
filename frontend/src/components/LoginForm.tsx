@@ -12,11 +12,13 @@ const LoginForm = () => {
   const navigate = useNavigate();
 
 
-    console.log("Login attempted with:", { username, password });
-    navigate("/dashboard");
+ 
 
     const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
+
+      console.log("Login attempted with:", { username, password });
+    
   
       try {
         const response = await fetch("http://ec2-65-0-97-19.ap-south-1.compute.amazonaws.com:4000/api/login", {
