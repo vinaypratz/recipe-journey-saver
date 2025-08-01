@@ -14,7 +14,8 @@ const pool = new Pool({
   database: process.env.DB_NAME,
   password: process.env.DB_PASSWORD,
   port: process.env.DB_PORT || 5432,
-});
+  ssl: {rejectUnauthorized: false
+}});
 
 // Test function to check DB connection on server start
 async function testDbConnection() {
