@@ -19,7 +19,7 @@ const Dashboard = () => {
               <Construction className="h-16 w-16 text-accent" />
             </div>
             <CardTitle className="text-3xl text-foreground mb-4">
-              Thanks for coming!
+              Thanks for visiting!
             </CardTitle>
           </CardHeader>
           <CardContent>
