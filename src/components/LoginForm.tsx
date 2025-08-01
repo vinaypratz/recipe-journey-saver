@@ -77,23 +77,8 @@ const LoginForm = () => {
                 Sign In
               </Button>
             </form>
-
-            <div className="mt-6 text-center">
-              <Button variant="link" className="text-muted-foreground hover:text-primary">
-                Forgot your password?
-              </Button>
-            </div>
           </CardContent>
         </Card>
-
-        <div className="mt-6 text-center">
-          <p className="text-sm text-muted-foreground">
-            Don't have an account?{" "}
-            <Button variant="link" className="text-accent hover:text-accent/80 p-0 h-auto">
-              Create one today
-            </Button>
-          </p>
-        </div>
       </div>
     </div>
   );
