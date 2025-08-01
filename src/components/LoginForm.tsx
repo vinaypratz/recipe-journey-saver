@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -8,11 +9,13 @@ import { ChefHat, Utensils } from "lucide-react";
 const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Login attempted with:", { username, password });
-    // Handle login logic here
+    // Simulate successful login and navigate to dashboard
+    navigate("/dashboard");
   };
 
   return (
