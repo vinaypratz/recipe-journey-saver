@@ -19,23 +19,21 @@ const LoginForm = () => {
       e.preventDefault();
   
       try {
-        const response = await fetch(
-          "http://ec2-65-0-97-19.ap-south-1.compute.amazonaws.com:4000/api/login",
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ username, password }),
-          }
-        );
+        const response = await fetch("http://ec2-65-0-97-19.ap-south-1.compute.amazonaws.com:4000/api/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password }),
+        });
+    
         const data = await response.json();
     
-        if (response.ok && data.message === "Login successful") {
+        if (response.ok) {
+          // Only navigate after confirming successful login
           navigate("/dashboard");
         } else {
-          // Handle error (show message in UI)
-          alert(data.error || "Login failed");
+          alert(data.error || "Invalid username or password");
         }
-      } catch (error) {
+      } catch (error: any) {
         alert("Network error: " + error.message);
       }
     };
