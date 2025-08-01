@@ -33,7 +33,7 @@ async function testDbConnection() {
 
 // Simple route to test backend
 app.get('/', (req, res) => {
-  res.send('Backend server is running');
+  res.status(200).send('Backend server is running');
 });
 
 // Start the server
