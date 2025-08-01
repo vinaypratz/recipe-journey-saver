@@ -11,12 +11,36 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Login attempted with:", { username, password });
-    // Simulate successful login and navigate to dashboard
-    navigate("/dashboard");
+  
+    try {
+      const response = await fetch(
+        "http://ec2-65-0-97-19.ap-south-1.compute.amazonaws.com:4000/api/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password }),
+        }
+      );
+  
+      const data = await response.json();
+  
+      if (response.ok) {
+        // Login successful
+        console.log("Login successful:", data);
+        // Navigate to dashboard
+        navigate("/dashboard");
+      } else {
+        // Login failed - show alert or render error message
+        alert(data.error || "Login failed. Please check your credentials.");
+      }
+    } catch (error: any) {
+      alert("Network error: " + error.message);
+    }
   };
+
 
   return (
     <div className="min-h-screen bg-gradient-background flex items-center justify-center p-4">
