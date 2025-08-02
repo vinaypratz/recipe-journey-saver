@@ -4,21 +4,29 @@ const cors = require('cors');
 const { Pool } = require('pg');
 
 const app = express();
+const allowedOrigins = [
+  'https://heartfelt-heliotrope-e9da64.netlify.app',
+  'http://localhost:4000'
+];
+
 app.use(cors({
-  origin: [
-    'https://heartfelt-heliotrope-e9da64.netlify.app', // replace with your actual frontend URL
-    'http://localhost:4000' // optional, if you use local frontend dev server
-  ],
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like curl or mobile apps)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
-app.options('*', cors({
-  origin: [
-    'https://heartfelt-heliotrope-e9da64.netlify.app',
-    'http://localhost:4000'
-  ],
-  credentials: true
-}));
+
+// Enable preflight (OPTIONS) requests for all routes
+app.options('*', cors());
+
 app.use(express.json());
 
 // Set up PostgreSQL connection pool using environment variables
