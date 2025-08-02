@@ -4,6 +4,7 @@ const cors = require('cors');
 const { Pool } = require('pg');
 
 const app = express();
+
 const allowedOrigins = [
   'https://heartfelt-heliotrope-e9da64.netlify.app',
   'http://localhost:4000'
@@ -24,8 +25,7 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-// Enable preflight (OPTIONS) requests for all routes
-app.options('*', cors());
+
 
 app.use(express.json());
 
