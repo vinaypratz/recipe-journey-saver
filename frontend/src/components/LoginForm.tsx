@@ -21,7 +21,7 @@ const LoginForm = () => {
     
   
       try {
-        const response = await fetch("https://my-backend-alb-272056293.ap-south-1.elb.amazonaws.com/api/login", {
+        const response = await fetch("https://api.vinaytrialdomain.fun/api/login", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ username, password }),
