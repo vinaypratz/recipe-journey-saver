@@ -6,8 +6,16 @@ const { Pool } = require('pg');
 const app = express();
 app.use(cors({
   origin: [
-    'https://heartfelt-heliotrope-e9da64.netlify.app/', // replace with your actual frontend URL
+    'https://heartfelt-heliotrope-e9da64.netlify.app', // replace with your actual frontend URL
     'http://localhost:4000' // optional, if you use local frontend dev server
+  ],
+  credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+app.options('*', cors({
+  origin: [
+    'https://heartfelt-heliotrope-e9da64.netlify.app',
+    'http://localhost:4000'
   ],
   credentials: true
 }));
