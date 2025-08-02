@@ -21,13 +21,8 @@ const LoginForm = () => {
     
   
       try {
-<<<<<<< HEAD
+ HEAD
         const response = await fetch("https://api.vinaytrialdomain.fun/api/login", {
-=======
- feature/landing-page
-        const response = await fetch("https://api.vinaytrialdomain.fun/api/login", 
-main
->>>>>>> 9374ca041241b939e3e96f9df1d791e632a0457f
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ username, password }),
