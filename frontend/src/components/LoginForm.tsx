@@ -12,9 +12,6 @@ const LoginForm = () => {
   const navigate = useNavigate();
 
 
-    console.log("Login attempted with:", { username, password });
-    navigate("/dashboard");
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
   
@@ -30,7 +27,7 @@ const LoginForm = () => {
       const data = await response.json();
   
       if (response.ok) {
-        // Only navigate after confirming successful login
+        // Navigate only after successful login
         navigate("/dashboard");
       } else {
         alert(data.error || "Invalid username or password");
@@ -39,7 +36,6 @@ const LoginForm = () => {
       alert("Network error: " + error.message);
     }
   };
-  
 
 
   return (
