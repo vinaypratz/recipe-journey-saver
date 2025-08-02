@@ -14,31 +14,31 @@ const LoginForm = () => {
 
  
 
-    const handleSubmit = async (e: React.FormEvent) => {
-      e.preventDefault();
-
-      console.log("Login attempted with:", { username, password });
-    
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
   
-      try {
-        const response = await fetch("https://my-backend-alb-272056293.ap-south-1.elb.amazonaws.com/api/login", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ username, password }),
-        });
-    
-        const data = await response.json();
-    
-        if (response.ok) {
-          // Only navigate after confirming successful login
-          navigate("/dashboard");
-        } else {
-          alert(data.error || "Invalid username or password");
-        }
-      } catch (error: any) {
-        alert("Network error: " + error.message);
+    console.log("Login attempted with:", { username, password });
+  
+    try {
+      const response = await fetch("https://api.vinaytrialdomain.fun/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
+  
+      const data = await response.json();
+  
+      if (response.ok) {
+        // Only navigate after confirming successful login
+        navigate("/dashboard");
+      } else {
+        alert(data.error || "Invalid username or password");
       }
-    };
+    } catch (error: any) {
+      alert("Network error: " + error.message);
+    }
+  };
+  
 
 
   return (
