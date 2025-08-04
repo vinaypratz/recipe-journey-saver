@@ -7,7 +7,9 @@ const app = express();
 
 const allowedOrigins = [
   'https://heartfelt-heliotrope-e9da64.netlify.app',
-  'http://localhost:4000'
+  'http://localhost:4000',
+  'https://vinaytrialdomain.fun',
+  'https://www.vinaytrialdomain.fun'
 ];
 
 app.use(cors({
